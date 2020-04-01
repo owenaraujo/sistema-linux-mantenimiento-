@@ -1,4 +1,5 @@
 const btnGetMachine = document.querySelector("#btnGetMachine");
+const mantienceSearch = document.querySelector("#mantienceSearch");
 const listMachine = document.querySelector("#idMachine");
 const selectMachine = document.querySelector("#equipo_id");
 const listPieza = document.querySelector("#idPieza");
@@ -20,7 +21,23 @@ const btnSaveMantienceCheck = document.querySelector("#btnSaveMantienceCheck");
 const mantenimiento_id_check = document.querySelector(
   "#mantenimiento_id_check"
 );
+const searchMachine = async () => {
+  const name = document.querySelector("#mantienceSearch").value;
+  const { data } = await axios.get(`/req/maquinas/busqueda/${name}`);
+  optionsMachine(data);
+};
+const optionsMachine = (machines) => {
+  let listMachines = "";
+  for (let i = 0; i < machines.length; i++) {
+    const machine = machines[i];
+    listMachines += `<div onclick="setPostPiezas(${machine.id})" class=" radio bg-white  ml-4  mb-1 c-hand">
+    <div  class="text-center">${machine.equipo}</div>
+  </div>
+    `;
+  }
 
+  listMachine.innerHTML = listMachines;
+};
 // set data table machines----->
 const setTableMachine = (machines) => {
   let listMachines = "";
@@ -35,7 +52,7 @@ const setTableMachine = (machines) => {
     selectMachines += `<option value="${machine.id}">${machine.equipo}</option>`;
   }
   selectMachine.innerHTML = selectMachines;
-  listMachine.innerHTML = listMachines;
+  // listMachine.innerHTML = listMachines;
   equipo_id_check.innerHTML = selectMachines;
 };
 const getMachines = async () => {
@@ -105,15 +122,16 @@ const setListPiezas = (piezas) => {
   pieza.innerHTML = body;
 };
 const setPostPiezas = async (id) => {
-  try {
-    const { data } = await axios.get(`/req/equipos/piezas/${id}`);
-    setListPiezas(data);
-  } catch (err) {
-    console.error("No se pudo conectar con el servidor");
-  }
+  // try {
+  //   const { data } = await axios.get(`/req/equipos/piezas/${id}`);
+  //   setListPiezas(data);
+  // } catch (err) {
+  //   console.error("No se pudo conectar con el servidor");
+  // }
   try {
     const { data } = await axios.get(`/req/mantenimiento_equipos/${id}`);
     setListMantience(data);
+    listMachine.innerHTML = ``;
   } catch (err) {
     console.error("No se pudo conectar con el servidor");
   }
@@ -159,8 +177,12 @@ const setListMantience = (mantiences) => {
   }
   for (let i = 0; i < mantiences.length; i++) {
     const mantience = mantiences[i];
-    body += `<div class="card mb-2 tercero text-white mb-2 text-capitalize" value="${mantience.id}">
-    <p class="text-center h5 m-0 p-2">${mantience.descripcion}</p>
+    body += `<div class="card mb-2 tercero text-white mb-2 text-capitalize" value="${mantience.m}">
+    <p class="text-center h5 m-0 p-2">${mantience.descripcion} </p>
+    <p class="text-center h5 m-0 p-2">${mantience.nombre_pieza} </p>
+    <p class="text-center h5 m-0 p-2">${mantience.personal} </p>
+    <p class="text-center h5 m-0 p-2">${mantience.frecuencia} </p>
+    <p class="text-center h5 m-0 p-2">${mantience.tipo} </p>
   </div>
   `;
   }

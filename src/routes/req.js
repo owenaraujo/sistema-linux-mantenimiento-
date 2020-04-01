@@ -113,10 +113,11 @@ router.get("/mantenimiento_piezas/:id", async (req, res) => {
 router.get("/mantenimiento_equipos/:id", async (req, res) => {
   const { id } = req.params;
   const mantenimiento_equipo = await pool.query(
-    "select * from mantenimiento_piezas where equipo_id = ?",
+    "SELECT mp.id AS m, mp.equipo_id AS equipo, mp.piezas_id AS pieza, p.nombre_pieza, p.codificacion, mp.tipo,mp.descripcion, mp.personal, mp.frecuencia, mp.create_at AS fecha FROM mantenimiento_piezas AS mp INNER JOIN piezas AS p ON  p.id = mp.piezas_id WHERE mp.equipo_id = ?;",
     [id]
   );
   res.json(mantenimiento_equipo);
+  console.log(mantenimiento_equipo);
 });
 router.get("/detalles_mantenimiento_piezas/", async (req, res) => {
   const detalles_mantenimiento_piezas = await pool.query(

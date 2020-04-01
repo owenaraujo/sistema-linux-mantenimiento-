@@ -5,115 +5,124 @@
 
 
 
-<!-- btn modal -->
 
- <!-- Modal chech -->
-<div
-class="modal fade left"
-id="checkMantience"
-tabindex="-1"
-role="dialog"
-aria-labelledby="exampleModalPreviewLabel"
-aria-hidden="true"
->
-<div class="modal-dialog modal-sm" role="document">
-  <div class="modal-content">
-    <div class="modal-header text-center tercero text-white">
-      <div class="modal-title" id="exampleModalPreviewLabel">
-        Registro de mantenimiento
+
+  <div class="row">
+    <div class="col-3 pt-3">
+      <div class="card  ml-3">
+        <div class="card-header cuarto text-center text-white">Mantenimientos hechos
+        </div>
+            <div class="list-scroll  card-body">
+             
+            </div>
       </div>
-      <button
-        type="button"
-        class="close text-white"
-        data-dismiss="modal"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div
-        id="notificacionAdd_check"
-        class="text-center text-white alert green-success p-2 d-none"
-      >
-        agregado con exito
-        <button id="notificacionRemove_check" class="close text-white">
-          <span id="notificacionRemove_check" aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="form_check" class="">
-        <select
-          class="custom-select form-control mb-1"
-          id="equipo_id_check"
-        ></select>
-        <select class="form-control custom-select" id="pieza_id_check"></select>
-
-        <select class="form-control custom-select mb-1" id="mantenimiento_id_check">
-        </select>
-      
-
-        <textarea
-          type="text"
-          id="detalles_check"
-          class="form-control mb-1"
-          placeholder="detalles"
-          rows="1"
-        />
-      </textarea>
-      <textarea type="text"
-      id="complicaciones_check"
-      class="form-control mb-1"
-      placeholder="complicaciones"
-      rows="1"></textarea>
-
-        
-        
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button
-          id="btnSaveMantienceCheck"
-          class="btn cuarto text-white"
-          type="submit"
-        >
-          guardar
-        </button>
+     
     </div>
     
-  </div>
-</div>
-</div>
-<!-- Modal chech -->
+    <div class="col-5-5 pt-3 "">
+       
+      <div class="card ml-2 mr-3 ">
+        <div class="card-body">
+              <div class="display-flex">
+                <input type="text"  class="form-control mt-1" name="" id="mantienceSearch">
+              <div onclick="searchMachine()" class=" ml-2 btn-lg  text-white text-center red-alert c-hand">
+                <i class="fas fa-search"></i>
+              </div>
+              </div>
+            </div>
+      </div>
+<div class="resultado " id="idMachine"></div>
     
+      <div class="card mt-3 ml-2 mr-3">
+        <div class="card-header cuarto text-center text-white">hola
+        </div>
+        <div class="list-scroll">
+          <div class="card">
+            <table class="table table-hover table-sm text-center text-capitalize">
+              <thead class="card-header quinto text-white">
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>codificacion</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
   
-
-
-<!-- Modal registro -->
-<div
-  class="modal fade left"
-  id="adMantience"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalPreviewLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-header tercero text-white">
-        <p class="modal-title" id="exampleModalPreviewLabel">
-          Calendario de mantenimiento
-        </p>
-        <button
-          type="button"
-          class="close text-white"
-          data-dismiss="modal"
-          aria-label="Close"
+              <tbody class="card-body" id="listMantience"></tbody>
+            </table>
+          </div>
+        </div>
+        <table
+          class="table table-hover table-sm text-center text-capitalize quinto text-white"
         >
-          <span aria-hidden="true">&times;</span>
-        </button>
+          <tfooter class="pt-5">
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>codificacion</th>
+              <th>acciones</th>
+            </tr>
+          </tfooter>
+        </table>
+        <div class="card">
+          <div class=" list-scroll-p" >
+            <table class="table table-hover table-sm text-center text-capitalize">
+              <thead class="card-header quinto text-white">
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>codificacion</th>
+                  <th>acciones</th>
+                </tr>
+              </thead>
+  
+              <tbody class="card-body" id=""></tbody>
+             
+              <tfooter class="card-footer quinto text-white ">
+               <tr>
+                 <th>id</th>
+                 <th>name</th>
+                 <th>codificacion</th>
+                 <th>acciones</th>
+               </tr>
+             </tfooter>
+           </table>
+          </div>
+         
+          
+         
+        </div>
+        
+        
       </div>
-      <div class="modal-body">
-        <div
+    </div>
+    <div class="col-3-5 pt-3 ">
+      <div class="accordion md-accordion accordion-3 " id="accordionEx194" role="tablist"
+  aria-multiselectable="true">
+      <div class="container-fluid">
+        <div class=" card  mr-3 ">
+          <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true"
+          aria-controls="collapse4">
+          <div class="card-header cuarto text-center text-white">
+            Informacion del equipo
+          </div>
+          </a>
+          <div id="collapse4" class="collapse show" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
+          <div class="card-body cajainfo">
+            agregar mantenimiento
+          </div>
+          </div>
+        </div>
+        <div class=" card  mt-2 mr-3  ">
+          <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse6" aria-expanded="false"
+          aria-controls="collapse6">
+          <div class="card-header cuarto text-center text-white">
+            reigsto de mantenimiento
+          </div>
+          </a>
+          <div id="collapse6" class="collapse" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
+          <div class="card-body ">
+            <div
           id="notificacionAdd"
           class="text-center alert green-success  text-white p-2 d-none"
         >
@@ -160,7 +169,7 @@ aria-hidden="true"
           
          
         </form>
-      </div>
+      
       <div class="modal-footer">
         <button
         id="btnSaveMantience"
@@ -170,116 +179,76 @@ aria-hidden="true"
         guardar
       </button>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Modal registro -->
-
-<div class="bagg" style="background-image: url(/productos/mantenimiento.png);">
-  <div class="row">
-    <div class="col-3 pt-3 ml-2">
-      <div class="card">
-        <div class="card-header">hola
+          </div>
+          </div>
         </div>
-            <div class="list-scroll  card-body">
-             
-            </div>
-      </div>
-    </div>
-    
-    <div class="col-5-5 pt-3 "">
-       
-      <div class="card ml-3 mr-3 ">
-        <div class="card-body">
-              <div class="display-flex">
-                <input type="text"  class="form-control mt-1" name="" id="">
-              <div class=" ml-2 btn-lg  text-white text-center red-alert c-hand">
-                <i class="fas fa-search"></i>
-              </div>
-              </div>
-            </div>
-      </div><div class="card mt-3 ml-3 mr-3">
-        <div class="card-header">hola
-        </div>
-        <div class="list-scroll-p  card-body">
-          
-        </div>
-      </div>
-    </div>
-    <div class="col-3-5 pt-3 ">
-      <div class="accordion md-accordion accordion-3 " id="accordionEx194" role="tablist"
-  aria-multiselectable="true">
-      <div class="container-fluid">
-        <div class=" card  mr-3 ">
-          <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true"
-          aria-controls="collapse4">
-          <div class="card-header">
-            hola
+        <div class=" card  mt-2 mr-3  ">
+          <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse5" aria-expanded="false"
+          aria-controls="collapse5">
+          <div class="card-header cuarto text-center text-white" >
+            realizar mantenimiento
           </div>
           </a>
-          <div id="collapse4" class="collapse show" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
-          <div class="card-body cajainfo">
-            hola
+          <div id="collapse5" class="collapse" role="tabpanel" aria-labelledby="heading5" data-parent="#accordionEx194">
+          <div class="card-body ">
+            <div
+        id="notificacionAdd_check"
+        class="text-center text-white alert green-success p-2 d-none"
+      >
+        agregado con exito
+        <button id="notificacionRemove_check" class="close text-white">
+          <span id="notificacionRemove_check" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form_check" class="">
+        <select
+          class="custom-select form-control mb-1"
+          id="equipo_id_check"
+        ></select>
+        <select class="form-control custom-select" id="pieza_id_check"></select>
+
+        <select class="form-control custom-select mb-1" id="mantenimiento_id_check">
+        </select>
+      
+
+        <textarea
+          type="text"
+          id="detalles_check"
+          class="form-control mb-1"
+          placeholder="detalles"
+          rows="1"
+        />
+      </textarea>
+      <textarea type="text"
+      id="complicaciones_check"
+      class="form-control mb-1"
+      placeholder="complicaciones"
+      rows="1"></textarea>
+
+        
+        
+      </form>
+    
+    <div class="modal-footer">
+      <button
+          id="btnSaveMantienceCheck"
+          class="btn cuarto text-white"
+          type="submit"
+        >
+          guardar
+        </button>
+    </div>
           </div>
           </div>
         </div>
-        <div class="card mt-2 mr-3 ">
-          <div class="card-body">
-            hola
-          </div>
-        </div>  
-        <div class="card mt-2 mr-3 ">
-          <div class="card-body">
-            hola
-          </div>
-        </div>
+        
       </div>
       </div>
     </div>
   </div>
   
-  <div class="row d-none">
-    <div class=" col-10 col-md-4 pt-3 ">
-    <div class="card">
-      <div class="card-header segundo text-white text-center"><div class="pt-1 h4">Equipos registrados</div></div>
-      <div id="idMachine" class="list-scroll card-body p-3">
-      </div>
-    </div>
-    </div>
-    <div class=" col-10 col-md-4 pt-3">
-      <div class="card">
-        <div class="card-header segundo text-white text-center" id="title_piezas">
-          <div class="h4 pt-1">Piezas registradas</div></div>
-          <div class="list-scroll card-body p-3" id="pieza">
-           
-          </div>
-        
-      </div>
+  
 
-    </div>
-    <div class="col-10 col-md-4 pt-3 pb-3">
-      <div class="card sesto">
-      <div class="card-header segundo text-white text-center" id="title_mantience">
-        <div class="h5 pt-1">Mantenimientos registrados</div>
-      </div>
 
-      <div class="list-scroll card-body p-3" id="listMantience"></div></div>
-    </div>
-  </div>
-</div>
 
-<div
-    class="caja cuarto c-hand"
-    data-toggle="modal"
-    data-target="#adMantience"
-  >
-    <i class="fas fa-calendar-plus"></i>
-  </div>
-  <div
-    class="caja-superior blue c-hand"
-    data-toggle="modal"
-    data-target="#checkMantience"
-  >
-    <i class="fas fa-check"></i>
-  </div>
 <script src="/mantience.js"></script>
