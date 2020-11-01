@@ -1,0 +1,209 @@
+<%- extend ('layout/layout',{title: 'mantenimiento'}) %> 
+
+  <%- include
+('partials/nav')%>
+
+
+
+
+<!-- btn modal -->
+
+ <!-- Modal chech -->
+<div
+class="modal fade left"
+id="checkMantience"
+tabindex="-1"
+role="dialog"
+aria-labelledby="exampleModalPreviewLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog modal-sm" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalPreviewLabel">
+        Registro de mantenimiento
+      </h5>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div
+        id="notificacionAdd_check"
+        class="text-center alert alert-info p-2 d-none"
+      >
+        agregado con exito
+        <button id="notificacionRemove_check" class="close">
+          <span id="notificacionRemove_check" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form_check" class="">
+        <select
+          class="custom-select form-control mb-1"
+          id="equipo_id_check"
+        ></select>
+        <select class="form-control custom-select" id="pieza_id_check"></select>
+
+        <select class="form-control custom-select mb-1" id="mantenimiento_id_check">
+        </select>
+      
+
+        <textarea
+          type="text"
+          id="detalles_check"
+          class="form-control mb-1"
+          placeholder="detalles"
+          rows="1"
+        />
+      </textarea>
+      <textarea type="text"
+      id="complicaciones_check"
+      class="form-control mb-1"
+      placeholder="complicaciones"
+      rows="1"></textarea>
+
+        
+        <button
+          id="btnSaveMantienceCheck"
+          class="btn btn-info btn-block"
+          type="submit"
+        >
+          guardar
+        </button>
+      </form>
+    </div>
+    
+  </div>
+</div>
+</div>
+<!-- Modal chech -->
+    
+  
+
+
+<!-- Modal registro -->
+<div
+  class="modal fade left"
+  id="adMantience"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalPreviewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalPreviewLabel">
+          Calendario de mantenimiento
+        </p>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div
+          id="notificacionAdd"
+          class="text-center alert alert-info p-2 d-none"
+        >
+           agregado con exito
+          <button id="notificacionRemove" class="close">
+            <span id="notificacionRemove" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="form" class="">
+          <select
+            class="custom-select form-control mb-1"
+            id="equipo_id"
+          ></select>
+
+          <select class="form-control custom-select" id="idPieza"></select>
+
+          <select class="form-control custom-select mb-1" id="idHerramienta">
+            <option value="" disabled="" selected="">Choose your option</option>
+          </select>
+          <select class="form-control custom-select mb-1" id="tipo">
+            <option value="" disabled selected>tipo de mantenimiento</option>
+            <option value="correctivo">correctivo</option>
+            <option value="preventivo">preventivo</option>
+            <option value="3"></option>
+        
+          </select>
+          <select class="form-control custom-select mb-1" id="frecuencia">
+            <option value="" disabled selected>Frecuencia</option>
+            <option value="diaria">diaria</option>
+            <option value="2">semanal</option>
+            <option value="3">mensual</option>
+            <option value="3">trimestral</option>
+            <option value="3">anual</option>
+          </select>
+
+          <textarea
+            type="text"
+            id="descripcion"
+            class="form-control mb-1"
+            placeholder="descripcion"
+            rows="1"
+          /></textarea>
+
+          
+          <button
+            id="btnSaveMantience"
+            class="btn btn-info btn-block"
+            type="submit"
+          >
+            guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal registro -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-11 col-md-4 mb-3">
+      <div class="card-title text-center"><p>Equipos registrados</p></div>
+      <div id="idMachine" class="list-scroll card p-3"></div>
+    </div>
+    <div class="col-11 col-md-4 mb-3">
+      <div class="card-title text-center" id="title_piezas">
+        <p>Piezas registradas</p>
+      </div>
+
+      <div class="list-scroll card p-3" id="pieza"></div>
+    </div>
+    <div class="col-11 col-md-4 mb-3">
+      <div class="card-title text-center" id="title_mantience">
+        <p>Mantenimientos registrados</p>
+      </div>
+
+      <div class="list-scroll card p-3" id="listMantience"></div>
+    </div>
+  </div>
+</div>
+
+<div
+    class="caja primary-color c-hand"
+    data-toggle="modal"
+    data-target="#adMantience"
+  >
+    <i class="fas fa-calendar-plus"></i>
+  </div>
+  <div
+    class="caja-superior blue c-hand"
+    data-toggle="modal"
+    data-target="#checkMantience"
+  >
+    <i class="fas fa-check"></i>
+  </div>
+<script src="/mantience.js"></script>
