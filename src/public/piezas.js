@@ -8,7 +8,7 @@ const notificacionAdd = document.querySelector("#notificacionAdd");
 
 // set data table products
 const setTableMachine = (piezas) => {
-  $("#searchForm")[0].reset();
+  // $("#searchForm")[0].reset();
   let body = "";
 
   for (let i = 0; i < piezas.length; i++) {

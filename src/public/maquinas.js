@@ -7,17 +7,21 @@ const notificacionRemove = document.querySelector("#notificacionRemove");
 const notificacionAdd = document.querySelector("#notificacionAdd");
 const search = document.querySelector("#search");
 const btnSearch = document.querySelector("#btnSearch");
-
+const load = document.querySelector("#load");
+const scroll = document.querySelector("#scroll");
+const funcion = document.querySelector("#funciones");
 
 // set data table products
 const setTableMachine = (machines) => {
+  load.classList.remove("d-none");
+  scroll.classList.add("scroll");
   let body = "";
 
   for (let i = 0; i < machines.length; i++) {
     const machine = machines[i];
-    body += `<div class="col mb-3">
-      <div class="card md-3">
-        <h3 class="card-header" _msthash="1543503" _msttexthash="151151">Codigo: ${machine.codificacion}</h3>
+    body += `<div class="col-10 col-md-4 pt-4">
+      <div class="card ">
+        <div class="card-header" _msthash="1543503" _msttexthash="151151"><h3>Codigo: ${machine.codificacion}</h3></div>
         <div class="card-body">
           <h5 class="card-title" _msthash="1919515" _msttexthash="852384">Nombre:${machine.equipo} </h5>
           <hr>  
@@ -41,6 +45,8 @@ const setTableMachine = (machines) => {
     </div>`;
   }
   listMachine.innerHTML = body;
+  load.classList.add("d-none");
+  scroll.classList.remove("scroll");
 };
 const deleteMachine = async (id) => {
   loader.classList.add("d-none");
@@ -57,7 +63,6 @@ const getMachines = async () => {
   try {
     const { data } = await axios.get("/req/maquinas/");
     setTableMachine(data);
-    
   } catch (err) {
     console.error("No se pudo conectar con el servidor");
   }
@@ -111,24 +116,41 @@ loaderRemove.addEventListener("click", (e) => {
   loader.classList.add("d-none");
 });
 btnSearch.addEventListener("click", async () => {
-  charging.classList.remove("d-none");
-  back.classList.add("back");
+  load.classList.remove("d-none");
   try {
-    const { data } = await axios.get(`/req/maquinas/${search.value}`);
+    const { data } = await axios.get(`/req/maquinas/busqueda/${search.value}`);
+
     setTableMachine(data);
-    charging.classList.add("d-none");
-    back.classList.remove("back");
+    load.classList.add("d-none");
   } catch (err) {
     console.error("No se pudo conectar con el servidor");
+    load.classList.add("d-none");
+    listMachine.innerHTML = `<div class="container p-4">
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <div
+          class="alert alert-danger alert-dismissible fade show text-center"
+          role="alert"
+        >
+          ingrese un dato valido
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>`;
   }
 });
 
 window.onload = async () => {
   await getMachines();
-  document.querySelector("#load").classList.add("d-none")
-
-  document.querySelector("#scroll").classList.remove("scroll")
-
+  addfuncion();
 };
 disminModal.addEventListener("click", () => {
   const msg = document.querySelector("#codificacion");
@@ -140,3 +162,9 @@ disminModal.addEventListener("click", () => {
   $("#formMachines")[0].reset();
   console.log("okidoki");
 });
+
+const addfuncion = () => {
+  funcion.innerHTML = `<a href="/logout"><li  class="mdl-menu__item">salir</li></a>
+  <button  onclick="getMachines()" class="mdl-menu__item">buscar maquinas</button>
+  <li class="mdl-menu__item">recargar</li>`;
+};

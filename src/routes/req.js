@@ -43,12 +43,13 @@ router.get("/maquinas/editando/:id", async (req, res) => {
   );
   res.json(maquinas);
 });
-router.get("/maquinas/:name", async (req, res) => {
+router.get("/maquinas/busqueda/:name", async (req, res) => {
   const { name } = req.params;
   const maquinas = await pool.query(
     `SELECT id, tipo, equipo, serial, codificacion, marca, modelo, funcionamiento, observaciones, user_id, date_format(create_at,'%d/%m/%Y %h:%i %p') as creacion, proveedor, estado FROM lista_maquinas
     where equipo LIKE '${name}%' OR codificacion LIKE '${name}%' OR marca LIKE '${name}%' OR modelo LIKE '${name}%'`
   );
+  console.log(name);
   res.json(maquinas);
 });
 router.get("/herramientas/", async (req, res) => {

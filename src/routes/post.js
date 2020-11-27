@@ -67,6 +67,31 @@ router.post("/maquinas", async (req, res) => {
   console.log(addMachine);
 });
 // <-----maquinas
+// mquina editada ---->
+router.post("/maquinas/editando/datos", async (req, res) => {
+  const {
+    equipo,
+    codificacion,
+    id,
+    serial,
+    marca,
+    modelo,
+    funcionamiento,
+    observaciones,
+  } = req.body;
+  
+  const addMachine = await pool.query(`UPDATE lista_maquinas SET equipo='${equipo}',
+  codificacion = '${codificacion}',
+    serial = '${serial}',
+    marca = '${marca}',
+    modelo = '${modelo}',
+    funcionamiento = '${funcionamiento}',
+    observaciones = '${observaciones}' WHERE id= ${id}`, 
+  );
+  res.json(addMachine);
+  console.log(addMachine);
+});
+// <-----maquina editada
 // herramientas--->
 router.post("/herramientas/", async (req, res) => {
   const { tipo, nombre, detalles, cantidad } = req.body;

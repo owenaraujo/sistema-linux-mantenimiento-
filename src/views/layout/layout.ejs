@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <link rel="shortcut icon" href="/icon.ico" type="image/x-icon" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/md/bootstrap.min.css" />
@@ -19,7 +18,35 @@
     />
 
     <title><%= title %></title>
+    <!-- css lite  -->
+    <link rel="stylesheet" href="/cssl/styles.css">
+    <link rel="stylesheet" href="/cssl/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="/cssl/images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/cssl/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="/cssl/images/favicon.png">
+    <style>
+        #view-source {
+          position: fixed;
+          display: block;
+          right: 0;
+          bottom: 0;
+          margin-right: 40px;
+          margin-bottom: 40px;
+          z-index: 900;
+        }
+        </style>
+    <!-- css lite  -->
   </head>
+</div>
   <body class="textSelected ">
  <div class="parent">
       <div id="scroll" class="child scroll">   
@@ -28,12 +55,81 @@
             <div class="body"></div>
           </div>
         </div>
-    <%- content %>
-
+        <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+          <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+            <div class="mdl-layout__header-row">
+              <span class="mdl-layout-title">S.A.R.M.</span>
+              <div class="mdl-layout-spacer"></div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="buscar">
+                  <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" id="buscar">
+                  <label class="mdl-textfield__label" for="buscar">Enter your query...</label>
+                </div>
+                
+              </div>
+              
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                <i class="material-icons">more_vert</i>
+              </button>
+              <ul id="funciones" class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                
+              </ul>
+            </div>
+          </header>
+          <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+            <header class="demo-drawer-header">
+              <img src="/cssl/images/user.jpg" class="demo-avatar">
+              <div class="demo-avatar-dropdown">
+                <span><%- user.fullname %> </span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                  <i class="material-icons" role="presentation">arrow_drop_down</i>
+                  <span class="visuallyhidden">Accounts</span>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <a href="/profile"><li class="mdl-menu__item">resumen</li></a>
+                  <li class="mdl-menu__item">resumen</li>
+                    <a href="/logout">
+                  <li class="mdl-menu__item"> 
+                  <i class="material-icons"></i>Salir</li>
+                    </a>               
+                </ul>
+              </div>
+            </header>
+            <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+              
+              <a class="mdl-navigation__link" href="/views/productos"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>productos</a>
+              <a class="mdl-navigation__link" href="/views/maquinas"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>maquinas</a>
+              <a class="mdl-navigation__link" href="/views/mantenimiento"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>mantenimiento</a>
+              <a class="mdl-navigation__link" href="/views/herramientas"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>herramientas</a>
+              <a class="mdl-navigation__link" href="/views/proveedores"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>proveedores</a>
+              <a class="mdl-navigation__link" href="/views/data"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>edicion de equipos</a>
+              <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
+              <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+              <div class="mdl-layout-spacer"></div>
+              <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>informacion </a>
+             
+            </nav>
+          </div>
+          
+           
+          <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="">
+              <%- content %>   
+            </div>
+          </main>
+        
+        </div>
+        
           
       </div>
       </div>
+      <script src="/cssl/material.min.js"></script>
     <script src="/md/jquery.js"></script>
+
     <script src="/md/popper.js"></script>
     <script src="/md/bootstrap.min.js"></script>
     <script src="/md/mdb.min.js"></script>

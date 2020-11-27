@@ -1,6 +1,42 @@
 const listMachine = document.querySelector("#machine");
 const input = document.querySelector("#input");
 const button = document.querySelector("#button");
+// add machine-------->
+const addMachine = async () => {
+  try {
+    await axios.post(
+      "/post/maquinas/editando/datos",
+      (data = {
+        equipo: equipo.value,
+        codificacion: codificacion.value,
+        id: id.value,
+        serial: serial.value,
+        marca: marca.value,
+        modelo: modelo.value,
+        funcionamiento: funcionamiento.value,
+        observaciones: observaciones.value,
+      })
+    );
+
+    getMachines();
+  } catch (err) {
+    console.log("epa hay algo mal");
+  }
+};
+// <---- ad machine
+button.addEventListener("click", (e) => {
+  e.preventDefault();
+  addMachine(
+    id.value,
+    equipo.value,
+    codificacion.value,
+    serial.value,
+    marca.value,
+    modelo.value,
+    funcionamiento.value,
+    observaciones.value
+  );
+});
 const getMachines = async () => {
   try {
     const { data } = await axios.get("/req/maquinas/");
@@ -22,6 +58,15 @@ const setInputsMachine = (dataMachine) => {
               value="${machine.equipo}"
               class="form-control"
               placeholder="equipo"
+            />
+            <div class="form-group">
+            <input
+              type="text"
+              id="id"
+              value="${machine.id}"
+              class="form-control"
+              placeholder="equipo"
+              hidden
             />
           </div>
           <div class="row px-3 mb-2 justify-content-between">
@@ -97,8 +142,9 @@ const setTableMachine = (machines) => {
   for (let i = 0; i < machines.length; i++) {
     const machine = machines[i];
     selectMachines += `<option  value="${machine.id}">${machine.equipo}</option>`;
+    maquinas = `<option selected disabled value="">seleciona un equipo</option>`;
   }
-  listMachine.innerHTML = selectMachines;
+  listMachine.innerHTML = maquinas + selectMachines;
 };
 listMachine.addEventListener("change", async () => {
   try {
@@ -113,8 +159,7 @@ listMachine.addEventListener("change", async () => {
 });
 window.onload = async () => {
   await getMachines();
+  document.querySelector("#load").classList.add("d-none");
+
+  document.querySelector("#scroll").classList.remove("scroll");
 };
-button.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log(id.value);
-});

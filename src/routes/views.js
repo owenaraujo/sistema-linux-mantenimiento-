@@ -3,9 +3,9 @@ const router = express.Router();
 const pool = require("../database");
 const { isLoggedIn } = require("../lib/auth");
 
-const app = express();
+
 // init mantience
-router.get("/mantenimiento", (req, res) => {
+router.get("/mantenimiento",isLoggedIn, (req, res) => {
   res.render("mantenimiento");
 });
 // init mantience
@@ -37,4 +37,4 @@ router.get("/data", isLoggedIn, (req, res) => {
   res.render("edit");
 });
 module.exports = router;
-app;
+

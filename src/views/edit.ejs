@@ -1,10 +1,27 @@
 <% extend('layout/layout',{title:'edit'}) %><%- include ('partials/nav') %>
-<h1>hello</h1>
-<select name="" id="machine" class="form-control custom-select"></select>
-<form action="" id="form">
-  <div id="input">
-    <input type="text" id="id" />
+
+<div class="container-fluid">
+  <div class="col-11 col-md-4 mb-3" ">
+    <div class="pt-4 mdl-color--grey-100">
+ <div class="card ">
+   <div class="card-header">
+    <select name="" id="machine" class="form-control custom-select"></select>
+   </div>
+   <div class="list-scroll">
+   <div class="card-body ">
+    <form id="form">
+      <div id="input">
+      
+      </div>
+      <button id="button" class="btn btn-danger btn-lg center">
+        Aceptar
+      </button>
+    </form>
+
+   </div>
   </div>
-  <button id="button" class="btn btn-danger"></button>
-</form>
+ </div>
+</div>
+</div>
+</div>
 <script src="/edit.js"></script>

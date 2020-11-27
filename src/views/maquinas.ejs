@@ -1,13 +1,13 @@
 <% extend('layout/layout') %><%- include ('partials/nav') %>
-<h1 class="text-center">Inventario de Equipos</h1>
+<h1 class="text-center h3">Inventario de Equipos</h1>
 <%- include ('partials/mensaje')%>
 
 <div class="container">
   <div class="row">
     <div
-      class="col-12 col-md-8 d-flex justify-content-between align-items-center"
+      class="col-11 col-md-8 d-flex justify-content-between align-items-center"
     >
-      <input type="text" name="" id="search" class="form-control" />
+      <input placeholder="busqueda" value="2" type="text" name="" id="search" class="form-control" />
       <button class="btn btn-warning" id="btnSearch">
         <i class="fas fa-search"></i>
       </button>
@@ -54,7 +54,7 @@ class="modal fade"
         </div>
         <div class="modal-body">
           <div id="notificacionAdd" class="alert alert-info p-2 d-none">
-            herramienta agregada con exito
+            Equipo agregado con exito
             <button id="notificacionRemove" class="close">
               <span id="notificacionRemove" aria-hidden="true">&times;</span>
             </button>
@@ -153,13 +153,10 @@ class="modal fade"
 </div>
 <!-- Central Modal Small -->
 
-<div class="p-4"></div>
-<div class="container-fluid">
-  <div id="loader" class="alert alert-info p-2 d-none">Cargando...</div>
-</div>
+
 <div class="container-fluid p-4">
   <div
-  class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4"
+  class="row pt-3"
     id="listMachine"
   ></div>
 </div>
