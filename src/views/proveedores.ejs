@@ -1,6 +1,6 @@
 <% extend ('layout/layout')%> <%- include ('partials/nav')%>
-<h1 class="text-center p-3">Proveedores</h1>
-<div id="loader" class="d-none">
+<!-- <div class="h3 text-center mt-2 mb-3">Proveedores</div> -->
+<!-- <div id="loader" class="d-none">
   <div class="container p-4">
     <div class="row">
       <div class="col-md-4 mx-auto">
@@ -13,104 +13,175 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <%- include ('partials/mensaje')%>
-<div class="container"></div>
-
-
-<!-- Central Modal Small -->
-<div
-  class="modal fade"
-  id="centralModalSm"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
-  aria-hidden="true"
->
-  <!-- Change class .modal-sm to change the size of the modal -->
-  <div class="modal-dialog modal-sm" role="document">
-    <form id="formProveedores">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100" id="myModalLabel">
-            Registro de Proveedor
-          </h4>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="notificacionAdd" class="alert alert-info p-2 d-none">
-            Proveedor agregado con exito
-            <button id="notificacionRemove" class="close">
-              <span id="notificacionRemove" aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <!-- body  -->
-
-          <div>
-            <input
-              type="text"
-              id="nombre"
-              class="form-control mb-4"
-              placeholder="Nombre"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="correo"
-              class="form-control mb-4"
-              placeholder="Correo Electronico"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="telefono"
-              class="form-control mb-4"
-              placeholder="telefono"
-            />
-          </div>
-          <!-- body -->
-        </div>
-        <div class="modal-footer">
-          <button
-            type="submit"
-            id="SaveProveedor"
-            class="btn btn-primary btn-sm"
-          >
-            Guardar
-          </button>
+<!--Accordion wrapper-->
+<div class="mt-2">
+  <div class="">
+    <div class="accordion md-accordion accordion-3 " id="accordionEx194" role="tablist"
+  aria-multiselectable="true">
+  
+  
+  
+  
+  
+  <div class="row container-fluid">
+    <!-- Accordion card -->
+  <div class="col-12 mb-2 col-md-4">
+    <div class="card">
+  
+      <!-- Card header -->
+      <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse4" aria-expanded="true"
+          aria-controls="collapse4">
+      <div class="card-header cuarto text-center text-white" role="tab" id="heading4">
+        
+          <div class="  text-white">
+            Proveedores <div class="animated-icon1 float-right mt-1"></div>
+      </div>
+    </div>
+  </a>
+    
+      <!-- Card body -->
+      <div id="collapse4" class="collapse show" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx194">
+        <div class="card-body pt-1">
+          <div id="listProveedores" class="list-scroll row"></div>
+          
         </div>
       </div>
-    </form>
+    </div>
+  </div>
+  <!-- Accordion card -->
+  
+  <!-- Accordion card -->
+  <div class="col-12 col-md-4 mb-2">
+  <div class="card">
+  
+    <!-- Card header -->
+    <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse5" aria-expanded="true"
+        aria-controls="collapse5">
+    <div class="card-header cuarto text-center text-white" role="tab" id="heading5">
+      
+        <div class="  text-white">
+          Productos del proveedor <div class="animated-icon1 float-right mt-1"></div>
+    </div>
+  </div>
+</a>
+  
+    <!-- Card body -->
+    <div id="collapse5" class="collapse" role="tabpanel" aria-labelledby="heading5" data-parent="#accordionEx194">
+      <div class="card-body">
+          <div id="listProductos" class="list-scroll row"></div>
+        
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- Accordion card -->
+ 
+  
+  <!-- Accordion card -->
+  <div class="col-12 col-md-4 mb-2">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <div class="card testimonial-card">
+  
+          <!-- Card header -->
+          <a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse6" aria-expanded="true"
+              aria-controls="collapse6">
+          <div class="card-header cuarto text-center text-white" role="tab" id="heading6">
+            
+              <div class="  text-white">
+                Información del proveedor <div class="animated-icon1 float-right mt-1"></div>
+          </div>
+        </div>
+      </a>
+      
+        
+          <!-- Card body -->
+          <div id="collapse6" class="collapse aqua-gradient" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx194">
+             <div id="infoProveedor"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+  
+          <!-- Card header --><a data-toggle="collapse" data-parent="#accordionEx194" href="#collapse7" aria-expanded="true"
+              aria-controls="collapse7">
+          <div class="card-header cuarto text-center text-white" role="tab" id="heading7">
+            
+              <div class="  text-white">
+                agregar proveedor <div class="animated-icon1 float-right mt-1"></div> <i class="fas fa-plus"></i>
+          </div>
+           
+          </div>
+         </a>
+          <!-- Card body -->
+          <div id="collapse7" class="collapse" role="tabpanel" aria-labelledby="heading7" data-parent="#accordionEx194">
+             <div class="card-body">
+            
+               <div id="notificacionAdd" class="alert alert-info p-2 d-none">
+                 Proveedor agregado con exito
+                 <button id="notificacionRemove" class="close">
+                   <span id="notificacionRemove" aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <!-- body  -->
+     
+              <form id="formProveedor">
+                <div>
+                  <input
+                    type="text"
+                    id="nombre"
+                    class="form-control mb-1"
+                    placeholder="Nombre"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="correo"
+                    class="form-control mb-1"
+                    placeholder="Correo Electronico"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    id="telefono"
+                    class="form-control mb-1"
+                    placeholder="telefono"
+                  />
+                </div>
+              </form>
+               <!-- body -->
+            
+             <div class="text-center text-white">
+               <button
+                 type="submit"
+                 id="SaveProveedor"
+                 class="btn tercero btn-sm"
+               >
+                 Guardar
+               </button>
+             </div>
+           </div>
+          </div>
+        </div>
+       
+      </div>
+     </div>
+  
+  </div>
+  <!-- Accordion card -->
+  </div>
+  </div>
   </div>
 </div>
-<!-- Central Modal Small -->
 
-<!-- tabla -->
-<div class="p-4"></div>
-<div class="container-fluid mt-4">
-  <div class="row">
-    <div class="col-11 col-md-4 mb-3">
-      <div id="listProveedores" class="list-scroll card p-3"></div>
-    </div>
-    <div class="col-11 col-md-4 mb-3">
-      <div class="list-scroll card p-3" id="listProductos"></div>
-    </div>
-    <div class="col-11 col-md-4 mb-3">
-      <div class="list-scroll card p-3" id="listProductosTotal"></div>
-    </div>
-  </div>
+<!--/.Accordion wrapper-->
+<!-- <div class="container"></div> -->
+
+  
+  <script src="/proveedores.js"></script>
 </div>
-<!-- tabla -->
-<div class="caja primary-color">
-  <i class="fas fa-plus" data-toggle="modal" data-target="#centralModalSm"></i>
-</div>
-<script src="/proveedores.js"></script>

@@ -3,20 +3,6 @@
 
 <h3 class="text-center h3">Inventario de Herramientas</h3>
 
-
-<div class="container">
-  <div class="row">
-    <div
-      class="col-12 col-md-8 d-flex justify-content-between align-items-center"
-    >
-      <input type="text" name="" id="search" class="form-control" />
-      <button class="btn btn-warning" id="btnSearch">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
 <!-- Central Modal Small -->
 <div
   class="modal fade"
@@ -30,30 +16,33 @@
   <div class="modal-dialog modal-sm" role="document">
     <form id="form">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title w-100" id="myModalLabel">
+        <div class="modal-header tercero text-white text-center">
+          <div class="modal-title h4" id="myModalLabel">
             Agrega una herramienta
-          </h4>
+          </div>
           <button
             type="button"
-            class="close"
+            class="close text-white"
             data-dismiss="modal"
             aria-label="Close"
-            >
+          >
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div id="notificacionAdd" class="alert alert-info p-2 d-none">
+          <div
+            id="notificacionAdd"
+            class="alert green-success text-white text-center p-2 d-none"
+          >
             herramienta agregada con exito
-            <button id="notificacionRemove" class="close">
+            <button id="notificacionRemove" class="close text-white">
               <span id="notificacionRemove" aria-hidden="true">&times;</span>
             </button>
           </div>
 
           <div class="form-group">
             <select
-              class="form-control"
+              class="form-control custom-select"
               _msthash="2736318"
               _msttexthash="1130220"
               id="tipo"
@@ -75,11 +64,11 @@
               id="nombre"
               class="form-control mb-4"
               placeholder="nombre de la herramienta"
-              />
+            />
           </div>
           <div>
             <input
-            type="text"
+              type="text"
               id="detalles"
               class="form-control mb-4"
               placeholder="detalles"
@@ -96,18 +85,11 @@
         </div>
         <div class="modal-footer">
           <button
-            type="button"
-            class="btn btn-secondary btn-sm"
-            data-dismiss="modal"
-          >
-          cerrar
-          </button>
-          <button
             id="saveHerramienta"
             type="submit"
-            class="btn btn-primary btn-sm"
+            class="btn cuarto text-white"
           >
-          Guardar
+            Guardar
           </button>
         </div>
       </div>
@@ -116,30 +98,27 @@
 </div>
 <!-- Central Modal Small -->
 
-
-
 <!-- Tabla-->
 
-
-  <div class=" list-scroll2 col-11">
-    <div class="card ">
-      <table class="table table-hover table-sm text-center text-capitalize">
-        <thead class="card-header">
-          <tr>
-            <th>N°</th>
-            <th>tipo</th>
-            <th>nombre</th>
-            <th>detalles</th>
-            <th>cantidad</th>
-          </tr>
-        </thead>
-        <tbody class="card-body" id="listherramienta"></tbody>
-      </table>
-    </div>
+<div class="list-scroll2 col-11">
+  <div class="card">
+    <table class="table table-hover table-sm text-center text-capitalize">
+      <thead class="card-header">
+        <tr>
+          <th>N°</th>
+          <th>tipo</th>
+          <th>nombre</th>
+          <th>detalles</th>
+          <th>cantidad</th>
+        </tr>
+      </thead>
+      <tbody class="card-body" id="listherramienta"></tbody>
+    </table>
   </div>
+</div>
 
 <!-- <--Tabla -->
-  <div class="caja primary-color">
-    <i class="fas fa-plus" data-toggle="modal" data-target="#centralModalSm"></i>
-  </div>
+<div class="caja cuarto">
+  <i class="fas fa-plus" data-toggle="modal" data-target="#centralModalSm"></i>
+</div>
 <script src="/herramientas.js"></script>

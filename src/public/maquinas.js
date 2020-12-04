@@ -1,3 +1,34 @@
+const deleteAlert = ` <div
+class="alert  alert-dismissible text-center fade show red-alert text-white "
+role="alert"
+id=""
+>
+<strong>hecho!</strong> equipo borrado
+<button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>`;
+const alertaError = ` <div
+class="alert yellow-danger text-center alert-dismissible fade show "
+role="alert"
+id=""
+>
+<strong class="ml-3">Error!</strong> No se pudo procesar
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>`;
+const alertaSearch = ` <div
+class="alert yellow-danger  alert-dismissible text-center fade show "
+role="alert"
+id=""
+>
+<strong  class="ml-3">Error!</strong> No se encontró
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>`;
+const alerta = document.querySelector("#alerta");
 const listMachine = document.querySelector("#listMachine");
 const disminModal = document.querySelector("#disminModal");
 const loader = document.querySelector("#loader");
@@ -9,7 +40,7 @@ const search = document.querySelector("#search");
 const btnSearch = document.querySelector("#btnSearch");
 const load = document.querySelector("#load");
 const scroll = document.querySelector("#scroll");
-const funcion = document.querySelector("#funciones");
+// const funcion = document.querySelector("#funciones");
 
 // set data table products
 const setTableMachine = (machines) => {
@@ -19,23 +50,19 @@ const setTableMachine = (machines) => {
 
   for (let i = 0; i < machines.length; i++) {
     const machine = machines[i];
-    body += `<div class="col-10 col-md-4 pt-4">
-      <div class="card ">
-        <div class="card-header" _msthash="1543503" _msttexthash="151151"><h3>Codigo: ${machine.codificacion}</h3></div>
+    body += `<div class="contenido  col-md-4 col-12 mb-1">
+      <div class="card card-2 ">
+        <div class="card-header segundo text-center text-white" _msthash="1543503" _msttexthash="151151"><h3>Codigo: ${machine.codificacion}</h3></div>
         <div class="card-body">
           <h5 class="card-title" _msthash="1919515" _msttexthash="852384">Nombre:${machine.equipo} </h5>
           <hr>  
         </div>
         <div class="card-body">
-          <a
-            href="/productos/editproduct/{{ id }}"
-            class="button-machine bg-warning"
-            ><i class="far fa-edit"></i></i
-          ></a>
-          <div onclick='deleteMachine(${machine.id})' class="button-machine bg-danger c-hand"
+          
+          <div onclick='deleteMachine(${machine.id})' class="button-machine red-alert c-hand"
             ><i class="fas fa-trash-alt "></i></i
           ></div>
-          <a href="/views/maquinas/piezas/${machine.id}" class="btn btn-primary"
+          <a href="/views/maquinas/piezas/${machine.id}" class="btn yellow-danger"
             >p</a
           >
         </div>
@@ -49,10 +76,10 @@ const setTableMachine = (machines) => {
   scroll.classList.remove("scroll");
 };
 const deleteMachine = async (id) => {
-  loader.classList.add("d-none");
   try {
     await axios.get(`/delete/machina/${id}`);
-    loader.classList.remove("d-none");
+
+    alerta.innerHTML += deleteAlert;
     getMachines();
   } catch (error) {
     console.log("no nene, lo estas haciendo mal");
@@ -113,44 +140,29 @@ notificacionRemove.addEventListener("click", (e) => {
 });
 loaderRemove.addEventListener("click", (e) => {
   e.preventDefault();
-  loader.classList.add("d-none");
+  // loader.classList.add("d-none");
 });
 btnSearch.addEventListener("click", async () => {
-  load.classList.remove("d-none");
+  // load.classList.remove("d-none");
   try {
     const { data } = await axios.get(`/req/maquinas/busqueda/${search.value}`);
 
-    setTableMachine(data);
+    if (data.length === 0) {
+      alerta.innerHTML = alertaSearch;
+    } else {
+      setTableMachine(data);
+    }
     load.classList.add("d-none");
   } catch (err) {
     console.error("No se pudo conectar con el servidor");
-    load.classList.add("d-none");
-    listMachine.innerHTML = `<div class="container p-4">
-    <div class="row">
-      <div class="col-md-4 mx-auto">
-        <div
-          class="alert alert-danger alert-dismissible fade show text-center"
-          role="alert"
-        >
-          ingrese un dato valido
-          <button
-            type="button"
-            class="close"
-            data-dismiss="alert"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>`;
+    getMachines();
+    alerta.innerHTML = alertaError;
   }
 });
 
 window.onload = async () => {
   await getMachines();
-  addfuncion();
+  // addfuncion();
 };
 disminModal.addEventListener("click", () => {
   const msg = document.querySelector("#codificacion");
@@ -160,11 +172,10 @@ disminModal.addEventListener("click", () => {
   msg.classList.remove("is-valid");
   serial.classList.remove("is-valid");
   $("#formMachines")[0].reset();
-  console.log("okidoki");
 });
 
-const addfuncion = () => {
-  funcion.innerHTML = `<a href="/logout"><li  class="mdl-menu__item">salir</li></a>
-  <button  onclick="getMachines()" class="mdl-menu__item">buscar maquinas</button>
-  <li class="mdl-menu__item">recargar</li>`;
-};
+// const addfuncion = () => {
+//   funcion.innerHTML = `<a href="/logout"><li  class="mdl-menu__item">salir</li></a>
+//   <button  onclick="getMachines()" class="mdl-menu__item">buscar maquinas</button>
+//   <li class="mdl-menu__item">recargar</li>`;
+// };

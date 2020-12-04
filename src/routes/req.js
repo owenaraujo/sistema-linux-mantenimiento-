@@ -6,12 +6,21 @@ const app = express();
 
 router.get("/usuarios", async (req, res) => {
   const user = await pool.query("SELECT * FROM usuarios");
-  console.log(user);
 });
 
 router.get("/productos/", async (req, res) => {
-  const productos = await pool.query("select * from lista_productos");
+  const productos = await pool.query(
+    "select * from lista_productos  order by producto asc"
+  );
   res.json(productos);
+});
+router.get("/producto/:id", async (req, res) => {
+  const { id } = req.params;
+  const producto = await pool.query(
+    "select * from lista_productos  where id=?",
+    [id]
+  );
+  res.json(producto);
 });
 
 router.get("/productos/proveedor/:id", async (req, res) => {
@@ -25,13 +34,13 @@ router.get("/productos/proveedor/:id", async (req, res) => {
 router.get("/productos/:name", async (req, res) => {
   const { name } = req.params;
   const productos = await pool.query(
-    `select * from lista_productos where producto LIKE '${name}%' OR categoria LIKE '${name}%' OR codificacion LIKE '${name}%'`
+    `select * from lista_productos where producto LIKE '${name}%' OR categoria LIKE '${name}%' OR codificacion LIKE '${name}%'  order by producto asc`
   );
   res.json(productos);
 });
 router.get("/maquinas/", async (req, res) => {
   const maquinas = await pool.query(
-    "SELECT id, tipo, equipo, serial, codificacion, marca, modelo, funcionamiento, observaciones, user_id, date_format(create_at,'%d/%m/%Y %h:%i %p') as creacion, proveedor, estado FROM lista_maquinas"
+    "SELECT id, tipo, equipo, serial, codificacion, marca, modelo, funcionamiento, observaciones, user_id, date_format(create_at,'%d/%m/%Y %h:%i %p') as creacion, proveedor, estado FROM lista_maquinas  order by equipo asc"
   );
   res.json(maquinas);
 });
@@ -47,40 +56,51 @@ router.get("/maquinas/busqueda/:name", async (req, res) => {
   const { name } = req.params;
   const maquinas = await pool.query(
     `SELECT id, tipo, equipo, serial, codificacion, marca, modelo, funcionamiento, observaciones, user_id, date_format(create_at,'%d/%m/%Y %h:%i %p') as creacion, proveedor, estado FROM lista_maquinas
-    where equipo LIKE '${name}%' OR codificacion LIKE '${name}%' OR marca LIKE '${name}%' OR modelo LIKE '${name}%'`
+    where equipo LIKE '${name}%' OR codificacion LIKE '${name}%' OR marca LIKE '${name}%' OR modelo LIKE '${name}%'  order by equipo asc`
   );
-  console.log(name);
+
   res.json(maquinas);
 });
 router.get("/herramientas/", async (req, res) => {
-  const herramientas = await pool.query("select * from herramientas");
-  // console.log(herramientas);
+  const herramientas = await pool.query(
+    "select * from herramientas  order by nombre asc"
+  );
+
   res.json(herramientas);
 });
+
 router.get("/herramientas/:name/", async (req, res) => {
   const { name } = req.params;
   const herramientas = await pool.query(
-    `select * from herramientas where nombre LIKE '${name}%' OR detalles LIKE '${name}%'`
+    `select * from herramientas where nombre LIKE '${name}%' OR detalles LIKE '${name}%'  order by nombre asc`
   );
   res.json(herramientas);
 });
 router.get("/piezas/", async (req, res) => {
   const piezas = await pool.query("select * from piezas");
-  console.log(piezas);
 });
 router.get("/proveedores/", async (req, res) => {
-  const proveedores = await pool.query("select * from proveedores");
+  const proveedores = await pool.query(
+    "select * from proveedores order by nombre asc"
+  );
+  res.json(proveedores);
+});
+router.get("/getProveedorById/:id", async (req, res) => {
+  const { id } = req.params;
+  const proveedores = await pool.query(
+    "select * from proveedores where id =?",
+    [id]
+  );
+
   res.json(proveedores);
 });
 router.get("/servicio/", async (req, res) => {
   const servicio = await pool.query("select * from servicio");
-  console.log(servicio);
 });
 router.get("/reparaciones_servicio/", async (req, res) => {
   const reparaciones_servicio = await pool.query(
     "select * from reparaciones_servicio"
   );
-  console.log(reparaciones_servicio);
 });
 router.get("/mantenimiento_piezas/:id", async (req, res) => {
   const { id } = req.params;
@@ -102,7 +122,6 @@ router.get("/detalles_mantenimiento_piezas/", async (req, res) => {
   const detalles_mantenimiento_piezas = await pool.query(
     "select * from detalles_mantenimiento_piezas"
   );
-  console.log(detalles_mantenimiento_piezas);
 });
 // piezas
 router.get("/equipos/piezas/:name", async (req, res) => {
@@ -112,7 +131,6 @@ router.get("/equipos/piezas/:name", async (req, res) => {
     `select * from piezas WHERE pieza_equipo_id = '${name}%'`
   );
 
-  // console.log(piezas);
   res.json(piezas);
 });
 // piezas

@@ -28,7 +28,7 @@ const setTableMachine = (machines) => {
 
   for (let i = 0; i < machines.length; i++) {
     const machine = machines[i];
-    listMachines += `<div onclick="setPostPiezas(${machine.id})" class="card mb-2 secondary-color mb-2 text-capitalize c-hand">
+    listMachines += `<div onclick="setPostPiezas(${machine.id})" class="card mb-2 cuarto text-white mb-2 text-capitalize c-hand">
     <p  class="text-center h5 m-0 p-2">${machine.equipo}</p>
   </div>
     `;
@@ -91,14 +91,14 @@ const setListPiezas = (piezas) => {
   let body = "";
 
   if (piezas.length === 0) {
-    pieza.innerHTML = `<div class="card mb-2 bg-primary mb-2 text-capitalize">
+    pieza.innerHTML = `<div class="card mb-2 quinto text-white mb-2 text-capitalize">
     <p class="text-center h5 m-0 p-2">no hay piezas registradas</p>
   </div>`;
     return;
   }
   for (let i = 0; i < piezas.length; i++) {
     const pieza = piezas[i];
-    body += `<div onclick="setPostMantience(${pieza.id})" class="card mb-2 bg-primary mb-2 text-capitalize c-hand" value="${pieza.id}">
+    body += `<div onclick="setPostMantience(${pieza.id})" class="card mb-2 quinto text-white mb-2 text-capitalize c-hand" value="${pieza.id}">
     <p class="text-center h5 m-0 p-2">${pieza.nombre_pieza}</p>
   </div>`;
   }
@@ -152,14 +152,14 @@ const setListMantience = (mantiences) => {
   let body = "";
 
   if (mantiences.length === 0) {
-    listMantience.innerHTML = `<div class="card mb-2 bg-white mb-2 text-capitalize c-hand">
+    listMantience.innerHTML = `<div class="card mb-2 text-white tercero mb-2 text-capitalize c-hand">
     <p class="text-center h5 m-0 p-2">no hay mantenimientos registrados</p>
   </div>`;
     return;
   }
   for (let i = 0; i < mantiences.length; i++) {
     const mantience = mantiences[i];
-    body += `<div class="card mb-2 bg-white mb-2 text-capitalize" value="${mantience.id}">
+    body += `<div class="card mb-2 tercero text-white mb-2 text-capitalize" value="${mantience.id}">
     <p class="text-center h5 m-0 p-2">${mantience.descripcion}</p>
   </div>
   `;

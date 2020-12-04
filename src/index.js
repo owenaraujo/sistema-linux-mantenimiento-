@@ -58,15 +58,15 @@ serv.use((req, res) => {
 serv.listen(serv.get("port"), () => {
   console.log("Server is in port", serv.get("port"));
 });
-const { Menu, app, BrowserWindow } = require("electron");
+// const { Menu, app, BrowserWindow } = require("electron");
 
-function CrearVentanaPrincipal() {
-  let VentanaPrincipal = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {},
-  });
-  VentanaPrincipal.loadURL("http://localhost:3000");
-}
-Menu.setApplicationMenu(null);
-app.whenReady().then(CrearVentanaPrincipal);
+// function CrearVentanaPrincipal() {
+//   let VentanaPrincipal = new BrowserWindow({
+//     width: 800,
+//     height: 600,
+//     webPreferences: {},
+//   });
+//   VentanaPrincipal.loadURL("http://localhost:3000");
+// }
+// Menu.setApplicationMenu(null);
+// app.whenReady().then(CrearVentanaPrincipal);

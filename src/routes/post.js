@@ -29,11 +29,12 @@ router.post("/productos/", async (req, res) => {
     precio_menor,
     precio_mayor,
     proveedor_id,
+    user_id: req.user.id,
   };
   const addproduct = await pool.query("insert into lista_productos set ?", [
     productos,
   ]);
-  // console.log(req.body);
+
   res.json(addproduct);
 });
 // <-----productos
@@ -64,7 +65,6 @@ router.post("/maquinas", async (req, res) => {
     machines,
   ]);
   res.json(addMachine);
-  console.log(addMachine);
 });
 // <-----maquinas
 // mquina editada ---->
@@ -79,17 +79,15 @@ router.post("/maquinas/editando/datos", async (req, res) => {
     funcionamiento,
     observaciones,
   } = req.body;
-  
+
   const addMachine = await pool.query(`UPDATE lista_maquinas SET equipo='${equipo}',
   codificacion = '${codificacion}',
     serial = '${serial}',
     marca = '${marca}',
     modelo = '${modelo}',
     funcionamiento = '${funcionamiento}',
-    observaciones = '${observaciones}' WHERE id= ${id}`, 
-  );
+    observaciones = '${observaciones}' WHERE id= ${id}`);
   res.json(addMachine);
-  console.log(addMachine);
 });
 // <-----maquina editada
 // herramientas--->

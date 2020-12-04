@@ -2,19 +2,6 @@
 <h1 class="text-center h3">Inventario de Equipos</h1>
 <%- include ('partials/mensaje')%>
 
-<div class="container">
-  <div class="row">
-    <div
-      class="col-11 col-md-8 d-flex justify-content-between align-items-center"
-    >
-      <input placeholder="busqueda" value="2" type="text" name="" id="search" class="form-control" />
-      <button class="btn btn-warning" id="btnSearch">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
 <div
   id="loader"
   class="alert alert-danger alert-dismissible fade show text-center editAlert d-none"
@@ -28,14 +15,14 @@
 
 <!-- Central Modal Small -->
 <div
-class="modal fade"
+  class="modal fade"
   id="centralModalSm"
   tabindex="-1"
   role="dialog"
   aria-labelledby="myModalLabel"
   aria-hidden="true"
 >
-<!-- Change class .modal-sm to change the size of the modal -->
+  <!-- Change class .modal-sm to change the size of the modal -->
   <div class="modal-dialog modal-md" role="document">
     <form id="formMachines">
       <div class="modal-content">
@@ -48,21 +35,24 @@ class="modal fade"
             class="close"
             data-dismiss="modal"
             aria-label="Close"
-            >
+          >
             <span aria-hidden="true" id="disminModal">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div id="notificacionAdd" class="alert alert-info p-2 d-none">
+          <div
+            id="notificacionAdd"
+            class="alert green-success text-white p-2 d-none"
+          >
             Equipo agregado con exito
-            <button id="notificacionRemove" class="close">
+            <button id="notificacionRemove" class="close text-white">
               <span id="notificacionRemove" aria-hidden="true">&times;</span>
             </button>
           </div>
           <!-- body  -->
           <div class="form-group">
             <input
-            type="text"
+              type="text"
               id="equipo"
               class="form-control"
               placeholder="equipo"
@@ -74,14 +64,14 @@ class="modal fade"
               _msthash="2736318"
               _msttexthash="1130220"
               id="tipo"
-              >
+            >
               <option selected disabled _istranslated="1">tipo</option>
               <option value="1">electrica</option>
               <option value="2">mecanica</option>
               <option value="3">hidraulica</option>
             </select>
             <input
-            type="text"
+              type="text"
               id="codificacion"
               class="form-control w-45"
               placeholder="codificacion"
@@ -102,17 +92,17 @@ class="modal fade"
               class="form-control mb-2"
               placeholder="serial"
               style="text-transform: uppercase"
-              />
+            />
             <div class="invalid-feedback">Ingrese un serial correcto</div>
             <h1 class="d-none" id="ValidateSerial"></h1>
           </div>
           <div class="row px-3 mb-2 justify-content-between">
             <input
-            type="text"
+              type="text"
               id="marca"
               class="form-control w-50"
               placeholder="marca"
-              />
+            />
             <input
               type="text"
               id="modelo"
@@ -138,12 +128,8 @@ class="modal fade"
           </div>
           <!-- body -->
         </div>
-        <div class="modal-footer">
-          <button
-            type="submit"
-            id="btnSaveMachine"
-            class="btn btn-primary btn-sm"
-          >
+        <div class="modal-footer text-center">
+          <button id="btnSaveMachine" class="btn cuarto text-white">
             Guardar
           </button>
         </div>
@@ -153,15 +139,13 @@ class="modal fade"
 </div>
 <!-- Central Modal Small -->
 
-
-<div class="container-fluid p-4">
-  <div
-  class="row pt-3"
-    id="listMachine"
-  ></div>
+<div class="container-fluid ml-1 mb-2 row col-12">
+  <div id="listMachine" class="div-maquinas-scroll"></div>
 </div>
+<div class="div-ocultarScroll-hb mdl-color--grey-100"></div>
 
-<div class="caja primary-color c-hand">
+<div class="caja cuarto c-hand">
   <i class="fas fa-plus" data-toggle="modal" data-target="#centralModalSm"></i>
 </div>
+
 <script src="/maquinas.js"></script>

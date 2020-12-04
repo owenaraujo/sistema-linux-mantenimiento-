@@ -1,18 +1,5 @@
 <% extend('layout/layout',{title: 'productos'}) %>
-<h3 class="text-center h3">Inventario de Productos</h3>
-
-<div class="container">
-  <div class="row">
-    <div
-      class="col-12 col-md-8 d-flex justify-content-between align-items-center"
-    >
-      <input type="text" name="" id="search" class="form-control" />
-      <button class="btn btn-warning" id="btnSearch">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
-</div>
+<!-- <h3 class="text-center h3">Inventario de Productos</h3> -->
 
 <!-- Central Modal Small -->
 <div
@@ -24,119 +11,233 @@
   aria-hidden="true"
 >
   <!-- Change class .modal-sm to change the size of the modal -->
-  <div class="modal-dialog modal-sm" role="document">
-    <form id="form">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <h4 class="modal-title w-100" id="myModalLabel">
-            Registro de Productos
-          </h4>
-          <button
-          type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="notificacionAdd" class="alert alert-info p-2 d-none">
-            Producto agregado con exito
-            <button id="notificacionRemove" class="close">
-              <span id="notificacionRemove" aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <!-- body  -->
-          <div class="form-group">
-            <select
-              class="custom-select form-control mb-3"
-              id="selectProveedor"
-            ></select>
-            <select
-            class="custom-select form-control"
-              _msthash="2736318"
-              _msttexthash="1130220"
-              id="categoria"
-              aria-placeholder="categoria"
-            >
-            <option selected disabled _istranslated="1">cateogoria</option>
-              <option value="accesorios">accesorios</option>
-              <option value="repuestos">repuestos</option>
-              <option value="almacenamiento">
-                dispositivo de almacenamiento
-              </option>
-              <option value="pieza compu">componente de computadora</option>
-
-              <option value="medicion">medicion</option>
-              <option value="corte">corte</option>
-            </select>
-          </div>
-          <div>
-            <input id="providerModal" name="idProvider" type="hidden" />
-            <input
-              type="text"
-              id="producto"
-              class="form-control mb-4"
-              placeholder="Nombre del producto"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="codificacion"
-              class="form-control mb-4"
-              placeholder="codificacion"
-              />
-          </div>
-          <div>
-            <input
-            type="text"
-              id="precio_mayor"
-              class="form-control mb-4"
-              placeholder="precio al por mayor"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="precio_menor"
-              class="form-control mb-4"
-              placeholder="precio unitario"
-            />
-          </div>
-          <!-- body -->
-        </div>
-        <div class="modal-footer">
-          <button type="submit" id="saveProduct" class="btn btn-primary btn-sm">
-            Guardar
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
+  <div class="modal-dialog modal-sm" role="document"></div>
 </div>
 <!-- Central Modal Small -->
 
 <!-- tabla -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-11 col-md-8 pt-2">
+      <div class="list-scroll">
+        <div class="card">
+          <table class="table table-hover table-sm text-center text-capitalize">
+            <thead class="card-header quinto text-white">
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>codificacion</th>
+                <th>acciones</th>
+              </tr>
+            </thead>
 
-<div class="list-scroll2 col-11">
-  <div class="card">
-    <table class="table table-hover table-sm text-center text-capitalize">
-      <thead class="card-header">
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>codificacion</th>
-          <th>acciones</th>
-        </tr>
-      </thead>
-      <tbody class="card-body" id="listProduct"></tbody>
-    </table>
+            <tbody class="card-body" id="listProduct"></tbody>
+          </table>
+        </div>
+      </div>
+      <table
+        class="table table-hover table-sm text-center text-capitalize quinto text-white"
+      >
+        <tfooter class="pt-5">
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>codificacion</th>
+            <th>acciones</th>
+          </tr>
+        </tfooter>
+      </table>
+    </div>
+
+    <div class="col-md-4 col-11 mb-2 mt-2">
+      <div
+        class="accordion md-accordion accordion-3"
+        id="accordionEx194"
+        role="tablist"
+        aria-multiselectable="true"
+      >
+        <div class="card">
+          <!-- Card header -->
+          <a
+            data-toggle="collapse"
+            data-parent="#accordionEx194"
+            href="#collapse5"
+            aria-expanded="true"
+            aria-controls="collapse5"
+          >
+            <div
+              class="card-header cuarto text-center text-white"
+              role="tab"
+              id="heading5"
+            >
+              <div class="text-white">
+                Registro de productos
+                <div class="animated-icon1 float-right mt-1"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card body -->
+
+          <div
+            id="collapse5"
+            class="collapse"
+            role="tabpanel"
+            aria-labelledby="heading5"
+            data-parent="#accordionEx194"
+          >
+            <div class="list-scroll">
+              <div id="" class="card-body">
+                <form id="form">
+                  <div id="notificacionAdd" class="alert alert-info p-2 d-none">
+                    Producto agregado con exito
+                    <button id="notificacionRemove" class="close">
+                      <span id="notificacionRemove" aria-hidden="true"
+                        >&times;</span
+                      >
+                    </button>
+                  </div>
+                  <!-- body  -->
+                  <div class="form-group">
+                    <select
+                      class="custom-select form-control mb-3"
+                      id="selectProveedor"
+                    ></select>
+                    <select
+                      class="custom-select form-control"
+                      _msthash="2736318"
+                      _msttexthash="1130220"
+                      id="categoria"
+                      aria-placeholder="categoria"
+                    >
+                      <option selected disabled _istranslated="1">
+                        cateogoria
+                      </option>
+                      <option value="accesorios">accesorios</option>
+                      <option value="repuestos">repuestos</option>
+                      <option value="almacenamiento">
+                        dispositivo de almacenamiento
+                      </option>
+                      <option value="pieza compu">
+                        componente de computadora
+                      </option>
+
+                      <option value="medicion">medicion</option>
+                      <option value="corte">corte</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <input id="providerModal" name="idProvider" type="hidden" />
+                    <input
+                      type="text"
+                      id="producto"
+                      class="form-control mb-4"
+                      placeholder="Nombre del producto"
+                    />
+                    <!-- <div class="input-group mb-4">
+                          <div class="input-group-prepend">
+                            <span
+                              class="input-group-text tercero text-white"
+                              id="inputGroupFileAddon01"
+                              >cargar</span
+                            >
+                          </div>
+                          <div class="custom-file">
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01"
+                            />
+                            <label class="custom-file-label" for="inputGroupFile01"
+                              >seleccione imagen del producto</label
+                            >
+                          </div>
+                        </div> -->
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      id="codificacion"
+                      class="form-control mb-4"
+                      placeholder="codificacion"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      id="precio_mayor"
+                      class="form-control mb-4"
+                      placeholder="precio al por mayor"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      id="precio_menor"
+                      class="form-control mb-4"
+                      placeholder="precio unitario"
+                    />
+                  </div>
+                  <!-- body -->
+
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      id="saveProduct"
+                      class="btn cuarto text-white btn-sm"
+                    >
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <!-- Card header -->
+          <a
+            data-toggle="collapse"
+            data-parent="#accordionEx194"
+            href="#collapse6"
+            aria-expanded="true"
+            aria-controls="collapse6"
+          >
+            <div
+              class="card-header cuarto text-center text-white"
+              role="tab"
+              id="heading6"
+            >
+              <div class="text-white">
+                Edición de productos
+                <div class="animated-icon1 float-right mt-1"></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card body -->
+
+          <div
+            id="collapse6"
+            class="collapse"
+            role="tabpanel"
+            aria-labelledby="heading6"
+            data-parent="#accordionEx194"
+          >
+            <div class="list-scroll">
+              <div id="formEdit" class="card-body"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 <!-- tabla -->
-<div class="caja primary-color">
+<!-- <div class="caja primary-color">
   <i class="fas fa-plus" data-toggle="modal" data-target="#centralModalSm"></i>
-</div>
+</div> -->
 <script src="/productos.js"></script>
