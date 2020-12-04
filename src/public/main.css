@@ -28,11 +28,11 @@
   overflow: hidden;
 }
 .child {
-  position: relative;
+  /* position: relative;
   float: left;
   height: 100%;
   width: calc(100% + 20px);
-  overflow-y: auto;
+  overflow-y: auto; */
 }
 body {
   height: 100vh;
@@ -120,7 +120,29 @@ body {
 .contenedor {
   position: fixed;
 }
-
+.bagg {
+  /* right: -50px; */
+  width: 100%;
+  height: 90vh;
+  background-size: contain;
+  /* background-size: 100%; */
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+.cajainfo {
+  height: 28vh;
+}
+.list1 {
+  width: 100%;
+  height: 50%;
+  background: red;
+}
+.col-3-5 {
+  -ms-flex: 0 0 29%;
+  flex: 0 0 29%;
+  max-width: 29%;
+  -ms-flex: 0 0 29%;
+}
 .caja {
   width: 50px;
   height: 50px;
@@ -214,6 +236,11 @@ body {
 }
 .list-scroll {
   max-height: 80vh;
+  height: auto;
+  overflow-y: auto;
+}
+.list-scroll-p {
+  max-height: 66.6vh;
   height: auto;
   overflow-y: auto;
 }
@@ -314,7 +341,7 @@ body {
   z-index: 0;
 }
 .scroll {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 @media screen and (max-height: 600px) {
   .list-scroll {
@@ -379,6 +406,9 @@ body {
   display: inline-block;
   width: 100%;
   height: auto;
+}
+.display-flex {
+  display: flex;
 }
 .card-2 {
   height: 65vh;
