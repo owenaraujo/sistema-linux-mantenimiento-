@@ -4,7 +4,7 @@ const expresiones = {
   password: /^.{4,12}$/, // 4 a 12 digitos.
   correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   telefono: /^\d{7,14}$/, // 7 a 14 numeros.
-  cod: /^([a-z]{2})\-([\d]{1})/, // 7 a 14 numeros.
+  cod: /^([A-Z]{2})\-([\d]{1})/i, // 7 a 14 numeros.
   serial: /([a-z0-9])/g,
 };
 
@@ -42,13 +42,36 @@ const replaceNumber = (el) => {
   el.value = str.replace(/\D/g, "").replace(/^([0-9]{2})/, "+$1 ");
 };
 // validate codificacion
+const validateCod2 = (el) => {
+  let msg = document.querySelector("#codificacionEdit");
+  let str = el.value;
+  el.value = str
+    .replace(/^([A-Z]{2})([0-9]{2})/, "$1-$2")
+    .replace(/^([A-Z]{3})/, "")
+    .replace(/^([0-9]{1})/, "")
+    .toUpperCase();
+
+  if (el.value === "") {
+    msg.classList.remove("is-invalid");
+    msg.classList.remove("is-valid");
+    return;
+  }
+
+  if (!expresiones.cod.test(el.value)) {
+    msg.classList.add("is-invalid");
+    return;
+  }
+  msg.classList.remove("is-invalid");
+  msg.classList.add("is-valid");
+};
 const validateCod = (el) => {
   let msg = document.querySelector("#codificacion");
   let str = el.value;
   el.value = str
-    .replace(/^([a-z]{2})([0-9]{2})/, "$1-$2")
-    .replace(/^([a-z]{3})/, "")
-    .replace(/^([0-9]{1})/, "");
+    .replace(/^([a-z]{2})([0-9]{2})/i, "$1-$2")
+    .replace(/^([a-z]{3})/i, "")
+    .replace(/^([0-9]{1})/, "")
+    .toUpperCase();
 
   if (el.value === "") {
     msg.classList.remove("is-invalid");

@@ -19,9 +19,7 @@ router.post("/producto", async (req, res) => {
       [producto, codificacion, precio_menor, precio_mayor, idEdit]
     );
 
-    res.json({
-      msg: "Informacion actulizada",
-    });
+    res.json(send);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: "No se pudo completar su operacion" });

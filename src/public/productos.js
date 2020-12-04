@@ -20,6 +20,16 @@ id=""
   <span aria-hidden="true">&times;</span>
 </button>
 </div>`;
+const editAlert = /*html*/ ` <div
+class="alert  alert-dismissible fade show green-success text-white "
+role="alert"
+id=""
+>
+<strong>hecho!</strong> Producto editado
+<button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>`;
 const deleteProducto = async (id) => {
   await axios.get(`/delete/producto/${id}`);
   alerta.innerHTML += deleteAlert;
@@ -59,6 +69,7 @@ const editProduct = async (id) => {
  <div>
    <input
    value = "${producto.codificacion}"
+   onkeyup="validateCod2(this)"
    
      type="text"
      id="codificacionEdit"
@@ -139,6 +150,9 @@ const saveEditProducto = async (data) => {
       precio_mayor: precio_mayorEdit.value,
     })
   );
+  getProducts();
+  alerta.innerHTML = editAlert;
+  formEdit.innerHTML = ``;
 };
 // sedEditProduct
 // get product--->

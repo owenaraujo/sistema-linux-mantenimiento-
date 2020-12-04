@@ -1,4 +1,4 @@
-const deleteAlert = ` <div
+const deleteAlert = /*html*/ ` <div
 class="alert  alert-dismissible text-center fade show red-alert text-white "
 role="alert"
 id=""
@@ -8,7 +8,7 @@ id=""
   <span aria-hidden="true">&times;</span>
 </button>
 </div>`;
-const alertaError = ` <div
+const alertaError = /*html*/ ` <div
 class="alert yellow-danger text-center alert-dismissible fade show "
 role="alert"
 id=""
@@ -18,7 +18,7 @@ id=""
   <span aria-hidden="true">&times;</span>
 </button>
 </div>`;
-const alertaSearch = ` <div
+const alertaSearch = /*html*/ ` <div
 class="alert yellow-danger  alert-dismissible text-center fade show "
 role="alert"
 id=""
