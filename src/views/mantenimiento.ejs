@@ -36,15 +36,17 @@
       <div class="card mt-3 ml-2 mr-3">
         <div class="card-header cuarto text-center text-white">hola
         </div>
-        <div class="list-scroll">
+        <div class="list-scroll-p">
           <div class="card">
             <table class="table table-hover table-sm text-center text-capitalize">
               <thead class="card-header quinto text-white">
                 <tr>
-                  <th>id</th>
-                  <th>name</th>
-                  <th>codificacion</th>
-                  <th>acciones</th>
+                  <th>#</th>
+                  <th>Pieza</th>
+                  <th>codigo</th>
+                  <th>frecuencia</th>
+                  <th>tipo</th>
+                  <th>mantenimiento</th>
                 </tr>
               </thead>
   
@@ -57,41 +59,16 @@
         >
           <tfooter class="pt-5">
             <tr>
-              <th>id</th>
-              <th>name</th>
-              <th>codificacion</th>
-              <th>acciones</th>
+              <th>#</th>
+              <th>Pieza</th>
+              <th>codigo</th>
+              <th>frecuencia</th>
+              <th>tipo</th>
+              <th>mantenimiento</th>
             </tr>
           </tfooter>
         </table>
-        <div class="card">
-          <div class=" list-scroll-p" >
-            <table class="table table-hover table-sm text-center text-capitalize">
-              <thead class="card-header quinto text-white">
-                <tr>
-                  <th>id</th>
-                  <th>name</th>
-                  <th>codificacion</th>
-                  <th>acciones</th>
-                </tr>
-              </thead>
-  
-              <tbody class="card-body" id=""></tbody>
-             
-              <tfooter class="card-footer quinto text-white ">
-               <tr>
-                 <th>id</th>
-                 <th>name</th>
-                 <th>codificacion</th>
-                 <th>acciones</th>
-               </tr>
-             </tfooter>
-           </table>
-          </div>
-         
-          
-         
-        </div>
+       
         
         
       </div>
@@ -146,7 +123,7 @@
             <option value="" disabled selected>tipo de mantenimiento</option>
             <option value="correctivo">correctivo</option>
             <option value="preventivo">preventivo</option>
-            <option value="3"></option>
+            
         
           </select>
           <select class="form-control custom-select mb-1" id="frecuencia">
@@ -163,7 +140,7 @@
             id="descripcion"
             class="form-control mb-1"
             placeholder="descripcion"
-            rows="1"
+            rows="0"
           /></textarea>
 
           

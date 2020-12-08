@@ -177,13 +177,15 @@ const setListMantience = (mantiences) => {
   }
   for (let i = 0; i < mantiences.length; i++) {
     const mantience = mantiences[i];
-    body += `<div class="card mb-2 tercero text-white mb-2 text-capitalize" value="${mantience.m}">
-    <p class="text-center h5 m-0 p-2">${mantience.descripcion} </p>
-    <p class="text-center h5 m-0 p-2">${mantience.nombre_pieza} </p>
-    <p class="text-center h5 m-0 p-2">${mantience.personal} </p>
-    <p class="text-center h5 m-0 p-2">${mantience.frecuencia} </p>
-    <p class="text-center h5 m-0 p-2">${mantience.tipo} </p>
-  </div>
+    body += `
+  <tr>
+  <th>${i + 1}</th>
+  <th>${mantience.nombre_pieza} </th>
+  <th>${mantience.codificacion}</th>
+  <th>${mantience.frecuencia}</th>
+  <th>${mantience.tipo}</th>
+  <th>${mantience.descripcion}</th>
+</tr>
   `;
   }
   listMantience.innerHTML = body;
