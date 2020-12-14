@@ -30,13 +30,15 @@ const optionsMachine = (machines) => {
   let listMachines = "";
   for (let i = 0; i < machines.length; i++) {
     const machine = machines[i];
+    body2 = /*html*/`<option selected disabled value="0">Seleccione un equipo</option>`;
+
     listMachines += `<div onclick="setPostPiezas(${machine.id})" class=" radio bg-white  ml-4  mb-1 c-hand">
     <div  class="text-center">${machine.equipo}</div>
   </div>
     `;
   }
 
-  listMachine.innerHTML = listMachines;
+  listMachine.innerHTML = body2 + listMachines;
 };
 // set data table machines----->
 const setTableMachine = (machines) => {
@@ -49,11 +51,13 @@ const setTableMachine = (machines) => {
     <p  class="text-center h5 m-0 p-2">${machine.equipo}</p>
   </div>
     `;
+    body2 = /*html*/`<option selected disabled value="0">Seleccione un equipo</option>`;
+
     selectMachines += `<option value="${machine.id}">${machine.equipo}</option>`;
   }
-  selectMachine.innerHTML = selectMachines;
+  selectMachine.innerHTML = body2 + selectMachines;
   // listMachine.innerHTML = listMachines;
-  equipo_id_check.innerHTML = selectMachines;
+  equipo_id_check.innerHTML = body2 + selectMachines;
 };
 const getMachines = async () => {
   try {
@@ -76,9 +80,11 @@ const setTablePiezasCheck = (piezas) => {
   }
   for (let i = 0; i < piezas.length; i++) {
     const pieza = piezas[i];
+    body2 = /*html*/`<option selected disabled value="0">Seleccione una Pieza</option>`;
+
     body += `<option value="${pieza.id}">${pieza.nombre_pieza}</option>`;
   }
-  pieza_id_check.innerHTML = body;
+  pieza_id_check.innerHTML = body2 + body;
 };
 const setTablePiezas = (piezas) => {
   let body = "";
@@ -89,9 +95,11 @@ const setTablePiezas = (piezas) => {
   }
   for (let i = 0; i < piezas.length; i++) {
     const pieza = piezas[i];
+    body2 = /*html*/`<option selected disabled value="0">Seleccione una Pieza</option>`;
+
     body += `<option value="${pieza.id}">${pieza.nombre_pieza}</option>`;
   }
-  listPieza.innerHTML = body;
+  listPieza.innerHTML = body2 + body;
 };
 const setPostTablePiezas = async (id) => {
   try {
@@ -144,9 +152,11 @@ const setTableHerramientas = (herramientas) => {
 
   for (let i = 0; i < herramientas.length; i++) {
     const herramienta = herramientas[i];
+    body2 = /*html*/`<option selected disabled value="0">seleccione herramienta</option>`;
+
     body += `<option value="${herramienta.id}">${herramienta.nombre}</option>`;
   }
-  listHerramientas.innerHTML = body;
+  listHerramientas.innerHTML = body2 + body;
 };
 // <---------- herramientas
 // mantience ----->
@@ -248,10 +258,13 @@ const setTableMantienceCheck = (mantenimientos) => {
   let body = "";
 
   for (let i = 0; i < mantenimientos.length; i++) {
+
     const mantenimiento = mantenimientos[i];
-    body += `<option value="${mantenimiento.id}">${mantenimiento.descripcion}</option>`;
+    console.log(mantenimiento.m);
+    body2 = /*html*/`<option selected disabled value="0">mantenimiento a hacer</option>`;
+    body += /*html*/`<option value="${mantenimiento.m}">${mantenimiento.descripcion}</option>`;
   }
-  mantenimiento_id_check.innerHTML = body;
+  mantenimiento_id_check.innerHTML = body2 + body;
 };
 // eventos---->
 equipo_id_check.addEventListener("change", async () => {
